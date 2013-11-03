@@ -1,7 +1,7 @@
 Revibe
 ======
 
-Revibe is a social aggregator for Android that displays recent posts from your friends feeds based on their determined mood, making it easier for you to get the content you want to read. Celebrate your friends' successes, and help others through hard times.
+Revibe is a social aggregator for Android that displays recent posts from your friends feeds based on their determined mood, making it easier for you to get to the content you want to read. Celebrate your friends' successes, discuss maddening social issues, and help others through hard times.
 
 
 Dependencies
