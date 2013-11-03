@@ -11,5 +11,4 @@
     <string name="retry">Retry</string>
     <string name="exit">Exit</string>
     <string name="disconnected">There is no internet right now. Please try again later.</string>
-
 </resources>

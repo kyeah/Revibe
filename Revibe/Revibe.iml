@@ -70,12 +70,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="support-v4-18.0.0" level="project" />
     <orderEntry type="library" exported="" name="ComFacebookFacebookAndroidSdk352.aar" level="project" />
+    <orderEntry type="library" exported="" name="android-async-http-1.4.3" level="project" />
     <orderEntry type="library" exported="" name="ComAfollestadCardsuiLibrary10SNAPSHOT.aar" level="project" />
     <orderEntry type="library" exported="" name="ComAndroidSupportAppcompatV71800.aar" level="project" />
     <orderEntry type="library" exported="" name="kryo-2.21-all" level="project" />
     <orderEntry type="library" exported="" name="ComAfollestadSilkLibrary10SNAPSHOT.aar" level="project" />
     <orderEntry type="library" exported="" name="httpclientandroidlib-1.1.2" level="project" />
+    <orderEntry type="library" exported="" name="Android-BitmapCache-2.2.2" level="project" />
     <orderEntry type="library" exported="" name="support-v13-18.0.0" level="project" />
+    <orderEntry type="library" exported="" name="disklrucache-2.0.2" level="project" />
   </component>
 </module>
 

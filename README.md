@@ -24,3 +24,11 @@ Dependencies
 4. Target and Compiler Android SDK: 18 (Jelly Bean 4.3)
 
 You can use later versions of Android Compat and Build Tools by tweaking build.gradle.
+
+### Included Libraries
+
+1. Android Asynchronous Http (https://github.com/loopj/android-async-http)
+
+2. Android BitmapCache (https://github.com/chrisbanes/Android-BitmapCache)
+
+3. DiskLruCache (https://github.com/JakeWharton/DiskLruCache)
