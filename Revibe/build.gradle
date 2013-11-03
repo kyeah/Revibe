@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.6.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "http://mente.github.io/facebook-api-android-aar"
+    }
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 18
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+
+}
+
+dependencies {
+	// You must install or update the Support Repository through the SDK manager to use this dependency.
+	// The Support Repository (separate from the corresponding library) can be found in the Extras category.
+	compile 'com.android.support:appcompat-v7:18.0.0'
+    compile 'com.afollestad.silk:library:1.0-SNAPSHOT'
+    compile 'com.afollestad.cardsui:library:1.0-SNAPSHOT'
+    compile 'com.facebook:facebook-android-sdk:3.5.2@aar'
+    compile files('libs/android-async-http-1.4.3.jar')
+}

@@ -1,0 +1,38 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
+        <item name="actionBarStyle">@style/Revibe.ActionBar</item>
+        <item name="actionButtonStyle">@style/Revibe.ActionButtonStyle</item>
+    </style>
+
+    <style name="AppTheme.noActionBar" parent="AppTheme">
+        <item name="android:windowTitleSize">0dp</item>
+    </style>
+
+    <style name="Revibe.ActionButtonStyle" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:minWidth">1dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+    </style>
+
+    <style name="Revibe.ActionBar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="displayOptions">showHome|useLogo</item>
+        <!--item name="android:background">@color/</item-->
+    </style>
+
+</resources>

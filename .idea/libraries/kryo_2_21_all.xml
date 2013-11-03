@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kryo-2.21-all">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Revibe/build/exploded-bundles/ComAfollestadSilkLibrary10SNAPSHOT.aar/libs/kryo-2.21-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
