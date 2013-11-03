@@ -15,21 +15,39 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.facebook.widget.ProfilePictureView;
+import com.revibe.utils.BitmapManager;
+import com.revibe.utils.UserHelper;
 
 public class RevibeActivity extends ActionBarActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+    private View mDrawerView;
     private ListView mDrawerList;
+
+    private ProfilePictureView profileImage;
+    private TextView nameText, emailText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = (DrawerLayout)  findViewById(R.id.drawer_layout);
+        mDrawerView =   (View)          findViewById(R.id.left_drawer);
+        mDrawerList =   (ListView)      findViewById(R.id.drawer_list);
+        profileImage =  (ProfilePictureView)     findViewById(R.id.profile_picture);;
+        nameText =      (TextView)      findViewById(R.id.name);
+        emailText =     (TextView)      findViewById(R.id.email);
+
+        profileImage.setProfileId(UserHelper.getCurrentUser().getId());
+        nameText.setText(UserHelper.getCurrentUser().getName());
+        emailText.setText((String) UserHelper.getCurrentUser().getProperty("email"));
 
         String arr[] = {"Facebook", "Google+", "Twitter"};
 
@@ -71,7 +89,7 @@ public class RevibeActivity extends ActionBarActivity {
         // Highlight the selected item, update the title, and close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(position+"");
-        mDrawerLayout.closeDrawer(mDrawerList);
+        mDrawerLayout.closeDrawer(mDrawerView);
     }
 
     @Override

@@ -4,25 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import android.util.Base64;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.facebook.*;
 import com.facebook.model.*;
+import com.revibe.utils.AndroidProperties;
 import com.revibe.utils.DialogHelper;
 import com.revibe.utils.UserHelper;
-import com.revibe.utils.WebHelper;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +28,19 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidProperties.init(this);
+
+        // Set pixel density based on Android device
+        DisplayMetrics metrics = new DisplayMetrics();
+        try {
+            WindowManager winMgr = (WindowManager)getSystemService(Context.WINDOW_SERVICE) ;
+            winMgr.getDefaultDisplay().getMetrics(metrics);
+        } catch (Exception e) {
+            metrics.density = 1;
+        }
+
+        AndroidProperties.set("pixel_density", String.valueOf(metrics.density), this);
+
         loginWithFacebook();
     }
 

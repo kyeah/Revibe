@@ -1,5 +1,7 @@
 package com.revibe.utils;
 
+import android.util.Log;
+
 import com.facebook.model.GraphUser;
 
 /**
