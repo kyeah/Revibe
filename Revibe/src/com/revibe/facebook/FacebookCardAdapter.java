@@ -1,10 +1,7 @@
 package com.revibe.facebook;
 
 import android.content.Context;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,9 +26,12 @@ public class FacebookCardAdapter extends CardAdapter {
     @Override
     protected boolean onProcessContent(TextView content, CardBase card) {
         content.setText(card.getContent());
-        Linkify.addLinks(content, Linkify.WEB_URLS);
-        content.setMovementMethod(LinkMovementMethod.getInstance());
-        content.setLinkTextColor(context.getResources().getColor(R.color.com_facebook_blue));
+        boolean linksPresent = Linkify.addLinks(content, Linkify.WEB_URLS);
+        if (linksPresent)
+            content.setLinkTextColor(context.getResources().getColor(R.color.com_facebook_blue));
+        else
+            content.setMovementMethod(null);
+
         return false;
     }
 
@@ -48,15 +48,41 @@ public class FacebookCardAdapter extends CardAdapter {
     @Override
     public View onViewCreated(int index, View recycled, CardBase item) {
         if (item instanceof FacebookCard) {
-            FacebookCard card =         (FacebookCard) item;
-            ProfilePictureView p =      (ProfilePictureView) recycled.findViewById(R.id.icon);
-            TextView subtitle =         (TextView) recycled.findViewById(R.id.subtitle);
-            TextView likes_comments =   (TextView) recycled.findViewById(R.id.likes_comments);
+            if (recycled == null)
+                recycled = View.inflate(context, R.layout.card_progress_bar, null);
 
-            p.setProfileId(card.getFacebookUserFrom().getId());
-            subtitle.setText(card.getTimeCreated());
-            likes_comments.setText(card.getLikes().size() + " likes");
+            FacebookViewHolder holder;
+            Object tag = recycled.getTag();
+            if (tag == null) {
+                holder = new FacebookViewHolder();
+                holder.p =              (ProfilePictureView) recycled.findViewById(R.id.icon);
+                holder.subtitle =       (TextView) recycled.findViewById(R.id.subtitle);
+                holder.likes_comments = (TextView) recycled.findViewById(R.id.likes_comments);
+                recycled.setTag(holder);
+            } else {
+                holder = (FacebookViewHolder) tag;
+            }
+
+            FacebookCard card = (FacebookCard) item;
+            ProfilePictureView p = holder.p;
+            TextView subtitle = holder.subtitle;
+            TextView likes_comments = holder.likes_comments;
+
+            if (p != null) {
+                p.setProfileId(card.getFacebookUserFrom().getId());
+            } if (subtitle != null) {
+                subtitle.setText(card.getTimeCreated());
+            } if (likes_comments != null) {
+                likes_comments.setText(card.getLikes().size() + " likes");
+            }
         }
+
         return super.onViewCreated(index, recycled, item);
+    }
+
+    public class FacebookViewHolder {
+        public ProfilePictureView p;
+        public TextView subtitle, likes_comments;
+
     }
 }
