@@ -16,6 +16,7 @@ import com.facebook.model.*;
 import com.revibe.utils.AndroidProperties;
 import com.revibe.utils.DialogHelper;
 import com.revibe.utils.UserHelper;
+import com.revibe.utils.WebHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,7 @@ public class LoginActivity extends Activity {
         permissions.add("email");
         permissions.add("user_status");
         permissions.add("friends_status");
+        permissions.add("read_stream");
         op.setPermissions(permissions);
 
         Session session = new Session.Builder(LoginActivity.this).build();

@@ -2,32 +2,60 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" style="@style/card_outer">
 
+    <RelativeLayout android:id="@+id/inner_frame" style="@style/card_inner">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
+        <!--suppress AndroidLintContentDescription -->
+        <com.facebook.widget.ProfilePictureView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_launcher"
+            />
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <LinearLayout
+            android:id="@+id/titleFrame"
+            style="@style/card_title_frame"
+            android:layout_toRightOf="@id/icon"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/likes"
-            android:text="likes"
-            android:layout_height="wrap_content"
+            <com.afollestad.silk.views.text.SilkCondensedTextView
+                android:id="@android:id/title"
+                style="@style/card_title"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="2dp"/>
+
+            <com.afollestad.silk.views.text.SilkCondensedTextView
+                android:id="@+id/subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"/>
+
+            <!--suppress AndroidLintContentDescription -->
+            <ImageButton
+                android:id="@android:id/button1"
+                style="@style/card_popup_anchor"/>
+
+        </LinearLayout>
+
+        <com.afollestad.silk.views.text.SilkTextView
+            android:id="@android:id/content"
+            style="@style/card_content"
+            android:layout_below="@id/icon"
+            android:textSize="13sp"
+            />
+
+        <com.afollestad.silk.views.text.SilkCondensedTextView
+            android:id="@+id/likes_comments"
             android:layout_width="wrap_content"
-            android:padding="5dp"/>
-
-        <TextView
-            android:id="@+id/comments"
-            android:text="comments"
-            android:padding="5dp"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:textSize="12sp"
+            android:layout_below="@android:id/content"/>
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <!--suppress AndroidLintContentDescription -->
+    <ImageView style="@style/card_shadow"/>
 
 </LinearLayout>

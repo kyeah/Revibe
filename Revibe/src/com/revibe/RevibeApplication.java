@@ -1,8 +1,10 @@
 package com.revibe;
 
 import android.app.Application;
+import android.net.http.AndroidHttpClient;
 
 import com.revibe.utils.BitmapManager;
+import com.revibe.utils.WebHelper;
 
 import uk.co.senab.bitmapcache.BitmapLruCache;
 
@@ -17,6 +19,7 @@ public class RevibeApplication extends Application {
     public void onCreate() {
         super.onCreate();
         bitmapMap = BitmapManager.init(this);
+        WebHelper.setupCookieStore(getApplicationContext());
     }
 
     @Override

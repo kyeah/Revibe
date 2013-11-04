@@ -47,4 +47,5 @@ dependencies {
     compile files('libs/android-async-http-1.4.3.jar')
     compile files('libs/Android-BitmapCache-2.2.2.jar')
     compile files('libs/disklrucache-2.0.2.jar')
+    compile files('libs/volley.jar')
 }

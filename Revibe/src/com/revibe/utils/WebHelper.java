@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.http.AndroidHttpClient;
 import android.util.Log;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.RequestParams;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -36,12 +40,19 @@ public class WebHelper {
 
 	static private final String TAG = "WebHelper";
 
+    static private AsyncHttpClient httpClient = new AsyncHttpClient();
 	static private PersistentCookieStore cookieStore;
 
     public static void setupCookieStore(Context context) {
         if (cookieStore == null)
             cookieStore = new PersistentCookieStore(context);
+
+        httpClient.setCookieStore(cookieStore);
     }
+
+
+    public static void get(String s, RequestParams params, AsyncHttpResponseHandler handler) { httpClient.get(s, params, handler); }
+
     public static PersistentCookieStore getCookies() { return cookieStore; }
     public static void clearCookies() { cookieStore.clear(); }
 
