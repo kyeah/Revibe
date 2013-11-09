@@ -10,6 +10,7 @@ import com.afollestad.cardsui.CardAdapter;
 import com.afollestad.cardsui.CardBase;
 import com.facebook.widget.ProfilePictureView;
 import com.revibe.R;
+import com.revibe.utils.BitmapManager;
 
 /**
  * Created by kyeh on 11/3/13.
@@ -55,7 +56,7 @@ public class FacebookCardAdapter extends CardAdapter {
             Object tag = recycled.getTag();
             if (tag == null) {
                 holder = new FacebookViewHolder();
-                holder.p =              (ProfilePictureView) recycled.findViewById(R.id.icon);
+                holder.icon =              (ProfilePictureView) recycled.findViewById(R.id.icon);
                 holder.subtitle =       (TextView) recycled.findViewById(R.id.subtitle);
                 holder.likes_comments = (TextView) recycled.findViewById(R.id.likes_comments);
                 recycled.setTag(holder);
@@ -64,16 +65,25 @@ public class FacebookCardAdapter extends CardAdapter {
             }
 
             FacebookCard card = (FacebookCard) item;
-            ProfilePictureView p = holder.p;
-            TextView subtitle = holder.subtitle;
-            TextView likes_comments = holder.likes_comments;
+            ProfilePictureView icon =   holder.icon;
+            TextView subtitle =         holder.subtitle;
+            TextView likes_comments =   holder.likes_comments;
 
-            if (p != null) {
-                p.setProfileId(card.getFacebookUserFrom().getId());
+            if (icon != null) {
+                if (card.getFacebookActorFrom() != null)
+                    icon.setProfileId(card.getFacebookActorFrom().getId());
             } if (subtitle != null) {
                 subtitle.setText(card.getTimeCreated());
             } if (likes_comments != null) {
-                likes_comments.setText(card.getLikes().size() + " likes");
+                int likes = card.getLikeCount();
+                int comments = card.getCommentCount();
+
+                String likeStr = likes + " like";
+                String commentStr = comments + " comment";
+                if (likes != 1) likeStr += "s";
+                if (comments != 1) commentStr += "s";
+
+                likes_comments.setText(likeStr + "\n" + commentStr);
             }
         }
 
@@ -81,7 +91,8 @@ public class FacebookCardAdapter extends CardAdapter {
     }
 
     public class FacebookViewHolder {
-        public ProfilePictureView p;
+        public ProfilePictureView icon;
+        //public ProfilePictureView p;
         public TextView subtitle, likes_comments;
 
     }

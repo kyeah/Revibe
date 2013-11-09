@@ -10,7 +10,6 @@
         <option name="SOURCE_GEN_TASK_NAME" value="generateDebugSources" />
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/res" />
-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
     <facet type="android-gradle" name="Android-Gradle">
@@ -42,7 +41,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/assets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
@@ -76,6 +75,7 @@
     <orderEntry type="library" exported="" name="kryo-2.21-all" level="project" />
     <orderEntry type="library" exported="" name="ComAfollestadSilkLibrary10SNAPSHOT.aar" level="project" />
     <orderEntry type="library" exported="" name="httpclientandroidlib-1.1.2" level="project" />
+    <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="library" exported="" name="Android-BitmapCache-2.2.2" level="project" />
     <orderEntry type="library" exported="" name="support-v13-18.0.0" level="project" />
     <orderEntry type="library" exported="" name="disklrucache-2.0.2" level="project" />

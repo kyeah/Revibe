@@ -10,18 +10,18 @@ import java.util.HashMap;
 /**
  * Created by kyeh on 11/4/13.
  */
-public class FacebookUser extends FacebookActor {
+public class FacebookPage extends FacebookActor {
 
-    private static HashMap<String, FacebookUser> userLRUCache = new HashMap<String, FacebookUser>();
+    private static HashMap<String, FacebookPage> userLRUCache = new HashMap<String, FacebookPage>();
 
-    private static final String TAG = "FacebookUser";
+    private static final String TAG = "FacebookPage";
     private String id, name, profilePicUrl;
 
-    public static FacebookUser addToCache(FacebookUser user) {
+    public static FacebookPage addToCache(FacebookPage user) {
         return userLRUCache.put(user.getId(), user);
     }
 
-    public static FacebookUser getFromCache(String id) {
+    public static FacebookPage getFromCache(String id) {
         return userLRUCache.get(id);
     }
 
@@ -29,9 +29,9 @@ public class FacebookUser extends FacebookActor {
         return userLRUCache.containsKey(id);
     }
 
-    public FacebookUser(JSONObject obj) {
+    public FacebookPage(JSONObject obj) {
         try {
-            id =            obj.getString("uid");
+            id =            obj.getString("page_id");
             name =          obj.getString("name");
             profilePicUrl = obj.getString("pic_square");
         } catch (JSONException je) {
