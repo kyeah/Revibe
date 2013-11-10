@@ -35,4 +35,9 @@
         <!--item name="android:background">@color/</item-->
     </style>
 
+    <style name="cardTitle" parent="card_title">
+        <item name="android:singleLine">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

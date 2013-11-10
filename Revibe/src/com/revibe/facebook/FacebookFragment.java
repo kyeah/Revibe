@@ -40,9 +40,14 @@ public class FacebookFragment extends Fragment {
 
     private Request request = null;
     private Request.Callback addCardsToAdapterCallback = new Request.Callback() {
+
         @Override
         public void onCompleted(Response response) {
-            cardAdapter.remove(cardAdapter.getCount() - 1);  // Remove the loading footer
+
+            // TODO: Perform parsing asynchronously
+            int footerPos = cardAdapter.getCount() - 1;
+            cardAdapter.remove(footerPos);  // Remove the loading footer
+
             Log.e(TAG, response.toString());
             GraphObject grobby = response.getGraphObject();
             request = response.getRequestForPagedResults(Response.PagingDirection.NEXT);
@@ -138,11 +143,19 @@ public class FacebookFragment extends Fragment {
         if (cardAdapter.getCount() < 2) {
             JSONObject query = new JSONObject();
             try {
-                query.put("posts", "SELECT post_id, actor_id, source_id, target_id, via_id, type, created_time, like_info, comment_info, message, attachment "
+                query.put("posts",
+                        "SELECT post_id, actor_id, source_id, target_id, via_id, type, created_time, "
+                        + "like_info, comment_info, description, description_tags, with_tags, message, attachment "
                         + "FROM stream WHERE filter_key = 'nf' "
                         + "ORDER BY created_time DESC");
-                query.put("users", "SELECT name, uid, pic_square FROM user WHERE uid IN (SELECT actor_id, source_id, target_id, via_id FROM #posts)");
-                query.put("pages", "SELECT name, page_id, pic_square FROM page WHERE page_id IN (SELECT actor_id, source_id, target_id, via_id FROM #posts)");
+                query.put("users",
+                        "SELECT name, uid, pic "
+                        + "FROM user WHERE uid IN "
+                        + "(SELECT actor_id, source_id, target_id, via_id, with_tags, description_tags FROM #posts)");
+                query.put("pages",
+                        "SELECT name, page_id, pic "
+                        + "FROM page WHERE page_id IN "
+                        + "(SELECT actor_id, source_id, target_id, via_id, with_tags, description_tags FROM #posts)");
                 String q = query.toString();
                 Log.e(TAG, "q=" + q);
                 FQLHelper.request(q, addCardsToAdapterCallback);

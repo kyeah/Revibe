@@ -32,7 +32,7 @@ public class DateHelper {
         if (seconds == 1)
             return "a second ago";
 
-        return seconds + " seconds ago";
+        return (int)seconds + " seconds ago";
     }
 
 }

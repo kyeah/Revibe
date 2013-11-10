@@ -33,7 +33,7 @@ public class FacebookPage extends FacebookActor {
         try {
             id =            obj.getString("page_id");
             name =          obj.getString("name");
-            profilePicUrl = obj.getString("pic_square");
+            profilePicUrl = obj.getString("pic");
         } catch (JSONException je) {
             Log.e(TAG, je.getMessage());
         }
